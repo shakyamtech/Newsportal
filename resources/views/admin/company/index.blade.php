@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h4>Company</h4>
-                    <a href="" class="btn btn-primary">Add</a>
+                    <a href="{{ route('admin.company.create') }}" class="btn btn-primary">Add</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
