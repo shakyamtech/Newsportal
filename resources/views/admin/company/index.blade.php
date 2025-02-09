@@ -31,7 +31,7 @@
                                         1
                                     </td>
                                     <td>
-                                        <img src="{{asset($company->logo)}}" alt="">
+                                        <img width="120" src="{{asset($company->logo)}}" alt="">
                                     </td>
                                     <td>
                                         {{$company->name}}
