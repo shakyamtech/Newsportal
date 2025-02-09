@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class Companycontroller extends Controller
@@ -13,7 +14,8 @@ class Companycontroller extends Controller
     public function index()
     {
         // go to index view
-        return view("admin.company.index");
+        $company = company::first();
+        return view("admin.company.index", compact('company'));
     }
 
     /**
@@ -31,6 +33,28 @@ class Companycontroller extends Controller
     public function store(Request $request)
     {
         // data save garne kam
+        $request->validate([
+            "name"=>"required",
+            "email"=>"required",
+            "phone"=>"required",
+            "address"=>"required",
+            "logo"=>"required|max:2048",
+        ]);
+
+
+        $file = $request->logo;
+        if($file){
+            $newName = time().".".$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+        }
+        Company::create([
+            "name"=>$request->name,
+            "email"=>$request->email,
+            "phone"=>$request->phone,
+            "address"=>$request->address,
+            "logo"=>"images/".$newName
+        ]);
+            return redirect()->route("admin.company.index");
     }
 
     /**

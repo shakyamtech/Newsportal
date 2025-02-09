@@ -4,7 +4,9 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h4>Company</h4>
+                    @if (!$company)
                     <a href="{{ route('admin.company.create') }}" class="btn btn-primary">Add</a>
+                    @endif
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -23,28 +25,29 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if ($company)
                                 <tr>
                                     <td>
                                         1
                                     </td>
                                     <td>
-                                        <img src="" alt="">
+                                        <img src="{{asset($company->logo)}}" alt="">
                                     </td>
                                     <td>
-                                        Company Name
+                                        {{$company->name}}
                                     </td>
                                     <td>
-                                        Company Email
+                                        {{$company->email}}
                                     </td>
                                     <td>
-                                        Company Phone
+                                        {{$company->phone}}
                                     </td>
                                     <td>
-                                        Company Address
+                                        {{$company->address}}
                                     </td>
                                     <td><a href="#" class="btn btn-primary btn-sm">Edit</a></td>
                                 </tr>
-
+                                @endif
                             </tbody>
                         </table>
                     </div>
