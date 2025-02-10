@@ -35,7 +35,12 @@
                                     {{$category->eng_title}}
                                 </td>
                                 <td>
-                                    {{$category->status}}
+                                    @if ($category->status == true)
+                                    <span class="badge bg-success text-white">active</span>
+                                    @else
+                                    <span class="badge bg-danger text-white">inactive</span>
+
+                                    @endif
                                 </td>
 
                                 <td>

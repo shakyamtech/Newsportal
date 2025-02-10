@@ -32,7 +32,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $category = new Category();
         $category->nep_title = $request->nep_title;
         $category->eng_title = $request->eng_title;
@@ -40,7 +40,7 @@ class CategoryController extends Controller
         $category->meta_keywords = $request->meta_keywords;
         $category->meta_description = $request->meta_description;
         $category->save();
-        return redirect()->route("admin.category.index");
+        return redirect()->back();
     }
 
     /**
