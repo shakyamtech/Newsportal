@@ -13,40 +13,43 @@
                         <div class="row">
                             <div class="col-6 mb-2">
                                 <lable for="name">Enter Company Name <span class="text-danger">*</span></lable>
-                                <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
-                                @error('name')
-                                <div class="text-danger">{{$message}}</div>
-                                @enderror
+                                <input type="text" name="name" id="name" class="form-control">
                             </div>
 
                             <div class="col-6 mb-2">
                                 <lable for="email">Enter Company Email<span class="text-danger">*</span></lable>
                                 <input type="email" name="email" id="email" class="form-control">
+
                             </div>
 
                             <div class="col-6 mb-2">
-                                <lable for="phone">Enter Company Phone<span class="text-danger">*</span>/lable>
+                                <lable for="phone">Enter Company Phone<span class="text-danger">*</span></lable>
                                         <input type="text" name="phone" id="phone" class="form-control">
+
                             </div>
 
                             <div class="col-6 mb-2">
                                 <lable for="address">Enter Company Address<span class="text-danger">*</span></lable>
                                 <input type="text" name="address" id="address" class="form-control">
+
                             </div>
 
                             <div class="col-6 mb-2">
                                 <lable for="facebook">Enter Company Facebook link</lable>
                                 <input type="text" name="facebook" id="facebook" class="form-control">
+
                             </div>
 
                             <div class="col-6 mb-2">
                                 <lable for="youtube">Enter Company Youtube link</lable>
                                 <input type="text" name="youtube" id="youtube" class="form-control">
+
                             </div>
 
                             <div class="col-6 mb-2">
                                 <lable for="logo">Enter Company Logo<span class="text-danger">*</span></lable>
                                 <input type="file" name="logo" id="logo" class="form-control">
+
                             </div>
 
                             <div class="col-12 mt-2">

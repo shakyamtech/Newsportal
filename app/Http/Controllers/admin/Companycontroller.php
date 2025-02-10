@@ -52,6 +52,8 @@ class Companycontroller extends Controller
             "email"=>$request->email,
             "phone"=>$request->phone,
             "address"=>$request->address,
+            "facebook"=>$request->facebook,
+            "youtube"=>$request->youtube,
             "logo"=>"images/".$newName
         ]);
             return redirect()->route("admin.company.index");
@@ -81,6 +83,45 @@ class Companycontroller extends Controller
     public function update(Request $request, string $id)
     {
         // to update
+        $request->validate([
+            "name"=>"required",
+            "email"=>"required",
+            "phone"=>"required",
+            "address"=>"required",
+            "logo"=>"required|max:2048",
+        ]);
+
+        $company = Company::find($id);
+        $file = $request->logo;
+        if($file){
+            $newName = time().".".$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            unlink($company->logo);
+
+        }
+        $company = Company::find($id);
+        if($file){
+        $company->Update([
+            "name"=>$request->name,
+            "email"=>$request->email,
+            "phone"=>$request->phone,
+            "address"=>$request->address,
+            "facebook"=>$request->facebook,
+            "youtube"=>$request->youtube,
+            "logo"=>"images/".$newName
+        ]);
+        } else{
+            $company->Update([
+                "name"=>$request->name,
+                "email"=>$request->email,
+                "phone"=>$request->phone,
+                "address"=>$request->address,
+                "facebook"=>$request->facebook,
+                "youtube"=>$request->youtube,
+                "logo"=>"images/".$newName
+            ]);
+        }
+            return redirect()->back();
     }
 
     /**
@@ -89,5 +130,9 @@ class Companycontroller extends Controller
     public function destroy(string $id)
     {
         // to delete
+        $company = Company::find($id);
+        unlink($company->logo);
+        $company->delete();
+        return redirect ()->back();
     }
 }
