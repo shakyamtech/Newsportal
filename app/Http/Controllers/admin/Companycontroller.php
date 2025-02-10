@@ -71,6 +71,8 @@ class Companycontroller extends Controller
     public function edit(string $id)
     {
         // to go in the edit page
+        $company = Company::find($id);
+        return view("admin.company.edit", compact('company'));
     }
 
     /**

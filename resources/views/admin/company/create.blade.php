@@ -13,7 +13,10 @@
                         <div class="row">
                             <div class="col-6 mb-2">
                                 <lable for="name">Enter Company Name <span class="text-danger">*</span></lable>
-                                <input type="text" name="name" id="name" class="form-control">
+                                <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
+                                @error('name')
+                                <div class="text-danger">{{$message}}</div>
+                                @enderror
                             </div>
 
                             <div class="col-6 mb-2">
@@ -22,7 +25,7 @@
                             </div>
 
                             <div class="col-6 mb-2">
-                                <lable for="phone">Enter Company Phone<<span class="text-danger">*</span>/lable>
+                                <lable for="phone">Enter Company Phone<span class="text-danger">*</span>/lable>
                                         <input type="text" name="phone" id="phone" class="form-control">
                             </div>
 
