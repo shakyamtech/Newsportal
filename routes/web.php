@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\admin\Companycontroller;
 use App\Http\Controllers\ProfileController;
@@ -21,7 +22,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource("/admin/company", Companycontroller::class)->names('admin.company');
     Route::resource("/admin/category",CategoryController::class)->names('admin.category');
-    
+    Route::resource("/admin/article",ArticleController::class)->names('admin.article');
+
 
 
 });

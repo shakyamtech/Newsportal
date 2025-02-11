@@ -20,8 +20,8 @@
                 class="fas fa-spinner"></i><span>Category</span></a>
         </li>
 
-        <li class="dropdown">
-            <a href="" class="nav-link"><i class="fas fa-poo"></i><span>Article</span></a>
+        <li class="dropdown {{ Request::routeIs('admin.article.*') ? 'active':''}}">
+            <a href="{{route('admin.article.index')}}" class="nav-link"><i class="fas fa-poo"></i><span>Article</span></a>
         </li>
 
         <li class="dropdown">
