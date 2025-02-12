@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -22,7 +23,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view("admin.article.create",);
+        $categories = Category::all();
+        // return $categories;
+        return view("admin.article.create",compact("categories"));
 
     }
 
@@ -31,7 +34,22 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request->all();
+        $article = new Article();
+        $article->title = $request->title;
+        $article->description = $request->description;
+        $article->meta_keywords=$request->meta_keywords;
+        $article->meta_description = $request->meta_description;
+        $file = $request->image;
+        if($file){
+            $newName = time().".".$file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            $article->image = "images/$newName";
+        }
+        $article->save();
+        $article->categories()->attach($request->categories);
+        return redirect()->route("admin.article.index");
+
     }
 
     /**

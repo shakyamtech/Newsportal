@@ -12,6 +12,14 @@
 
                         <div class="row">
                             <div class="col-6 mb-2">
+                                <label for="categories">Select Categories</label>
+                                <select name="categories[]" id="categories" class="form-control select2" multiple="">
+                                 @foreach ($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->eng_title}}</option>
+                                 @endforeach
+                                </select>
+                              </div>
+                            <div class="col-6 mb-2">
                                 <lable for="nep_title">Enter Title<span class="text-danger">*</span></lable>
                                 <input type="text" name="nep_title" id="nep_title" class="form-control">
                             </div>
