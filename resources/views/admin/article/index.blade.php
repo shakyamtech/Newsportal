@@ -39,13 +39,13 @@
                                     {{$article->views}}
                                 </td>
                                 <td>
-                                    {{$article->status}}
-                                    {{-- @if ($article->status == "pending")
-                                    <span class="badge bg-success text-white">active</span>
+                                    @if ($article->status == 'pending')
+                                    <span class="badge bg-warning text-white">Pending</span>
+                                    @elseif ($article->status == 'approved')
+                                    <span class="badge bg-success text-white">Approved</span>
                                     @else
-                                    <span class="badge bg-danger text-white">inactive</span>
-
-                                    @endif --}}
+                                    <span class="badge bg-danger text-white">Rejected</span>
+                                    @endif
                                 </td>
 
                                 <td>

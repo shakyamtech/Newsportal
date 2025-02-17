@@ -14,7 +14,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::orderBy("id","desc")->get();
         return view("admin.article.index", compact('articles'));
     }
 
@@ -34,7 +34,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->all();
+        //  return $request->all();
         $article = new Article();
         $article->title = $request->title;
         $article->description = $request->description;
@@ -48,7 +48,7 @@ class ArticleController extends Controller
         }
         $article->save();
         $article->categories()->attach($request->categories);
-        return redirect()->route("admin.article.index");
+        return redirect()->back();
 
     }
 
@@ -65,7 +65,9 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = Category::all();
+        $article = Article::find($id);
+        return view("admin.article.edit",compact("categories","article"));
     }
 
     /**

@@ -7,26 +7,28 @@
                     <a href="{{ route('admin.article.index') }}" class="btn btn-primary">Go back</a>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.article.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-
                         <div class="row">
-                            <div class="col-6 mb-2">
+                            <div class="form-group">
                                 <label for="categories">Select Categories</label>
                                 <select name="categories[]" id="categories" class="form-control select2" multiple="">
                                  @foreach ($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->eng_title}}</option>
+                                 <option value="{{$category->id}}">{{$category->eng_title}}</option>
+
+
                                  @endforeach
                                 </select>
                               </div>
                             <div class="col-6 mb-2">
-                                <lable for="nep_title">Enter Title<span class="text-danger">*</span></lable>
-                                <input type="text" name="nep_title" id="nep_title" class="form-control">
-                            </div>
+                                <label for="title">Enter Title<span class="text-danger">*</span></label>
+                                <input type="text" name="title" id="title" class="form-control">
+
+                              </div>
 
 
                             <div class="col-12 mb-2">
-                                <lable for="description">Write News </lable>
+                                <lable for="description">Write News<span>*</span></lable>
                                 <textarea name="description" id="description" class="form-control summernote">
                                     {{old('description')}}
                                 </textarea>

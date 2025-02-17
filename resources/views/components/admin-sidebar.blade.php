@@ -25,7 +25,7 @@
         </li>
 
         <li class="dropdown">
-            <a href="index.html" class="nav-link"><i class="fab fa-adversal"></i><span>Advertise</span></a>
+            <a href="{{route('dashboard')}}" class="nav-link"><i class="fab fa-adversal"></i><span>Advertise</span></a>
         </li>
         {{-- <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i
