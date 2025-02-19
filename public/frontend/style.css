@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
 
 :root{
-    --primary : #642671;
-    --light-primary : #6426711a;
-    --secondary : rgb(190, 78, 96);
+    --primary : #0f0beb;
+    --light-primary : #3508891a;
+    --secondary : rgb(78, 136, 190);
 }
 
 body{
@@ -14,4 +14,19 @@ body{
 .container{
     width: 86%;
     margin: auto;
+}
+.primary{
+    color: var(--primary);
+}
+.bg-primary{
+    background-color: var(--primary);
+}
+.bg-light-primary{
+    background-color: var(--light-primary);
+}
+.secondary{
+    color: var(--secondary);
+}
+.active{
+    color: var(--secondary);
 }
