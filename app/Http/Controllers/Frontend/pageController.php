@@ -23,7 +23,7 @@ class pageController extends Controller
 
     public function home()
     {
-        $article = Article::where('status', 'approved')->get();
+        $article = Article::where('status', 'pending')->get();
         $latest_article = Article::orderBy('id','desc')->where('status','approved')->first();
         $company = Company::first();
         return view('frontend.home', compact('article','latest_article'));
