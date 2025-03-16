@@ -18,13 +18,14 @@ class pageController extends Controller
         View::share([
             "company" => $company,
             "categories" => $categories,
+
         ]);
     }
 
     public function home()
     {
         $article = Article::where('status', 'pending')->get();
-        $latest_article = Article::orderBy('id','desc')->where('status','approved')->first();
+        $latest_article = Article::orderBy('id','desc')->where('status','pending')->first();
         $company = Company::first();
         return view('frontend.home', compact('article','latest_article'));
     }

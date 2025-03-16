@@ -88,7 +88,6 @@ class Companycontroller extends Controller
             "email"=>"required",
             "phone"=>"required",
             "address"=>"required",
-            "logo"=>"required|max:2048",
         ]);
 
         $company = Company::find($id);
@@ -99,7 +98,6 @@ class Companycontroller extends Controller
             unlink($company->logo);
 
         }
-        $company = Company::find($id);
         if($file){
         $company->Update([
             "name"=>$request->name,
