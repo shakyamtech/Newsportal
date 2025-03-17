@@ -29,11 +29,12 @@
                             </div>
 
                             <div class="col-6 mb-2">
-                                <lable for=",meta_description">Enter Meta Description (seperated by commas) </lable>
-                                <textarea name=",meta_description" id=",meta_description" class="form-control">
+                                <lable for="meta_description">Enter Meta Description (seperated by commas) </lable>
+                                <textarea name="meta_description" id="meta_description" class="form-control">
                                     {{$category->meta_description}}
                                 </textarea>
                             </div>
+                            
                             <div class="col-6 mb-2">
                                 <lable for="status">Change Status</lable>
                                 <select name="status" id="status" class="form-control">

@@ -80,15 +80,17 @@ class ArticleController extends Controller
         $article->description = $request->description;
         $article->meta_keywords=$request->meta_keywords;
         $article->meta_description = $request->meta_description;
+        $article->status = $request->status;
         $file = $request->image;
         if($file){
             $newName = time().".".$file->getClientOriginalExtension();
             $file->move('images', $newName);
+            unlink($article->image);
             $article->image = "images/$newName";
         }
-        $article->save();
+        $article->update();
         $article->categories()->sync($request->categories);
-        return redirect()->back();
+        return redirect()->route('admin.article.index');
     }
 
     /**

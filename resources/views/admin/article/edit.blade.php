@@ -31,27 +31,36 @@
                             <div class="col-12 mb-2">
                                 <lable for="description">Write News<span>*</span></lable>
                                 <textarea name="description" id="description" class="form-control summernote">
-                                    {{old('description')}}
+                                    {{$article->description}}
                                 </textarea>
                             </div>
                             <div class="col-12 mb-2">
                                 <lable for=",meta_keywords">Enter Meta Keywords (seperated by commas) </lable>
                                 <textarea name=",meta_keywords" id=",meta_keywords" class="form-control">
-                                    {{old('meta_keywords')}}
+                                    {{$article->meta_keywords}}
                                 </textarea>
                             </div>
                             <div class="col-12 mb-2">
                                 <lable for=",meta_description">Enter Meta Description (seperated by commas) </lable>
                                 <textarea name=",meta_description" id=",meta_description" class="form-control">
-                                    {{old('meta_description')}}
+                                    {{$article->meta_description}}
                                 </textarea>
                             </div>
                             <div class="col-6 mb-2">
                                 <lable for="image">Upload Image<span class="text-danger">*</span></lable>
                                 <input type="file" name="image" id="image" class="form-control">
                             </div>
+
+                            <div class="mb-3">
+                               <label for="status" class="form-label text-dark fw-bold">Status</label>
+                               <select name="status" id="status" class="form-control">
+                                   <option value="pending" {{$article->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                                   <option value="approved" {{$article->status == 'approved' ? 'selected' : '' }}>Approved</option>
+                                   <option value="rejected" {{$article->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
+                               </select>
+                            </div>
                             <div class="col-12 mt-2">
-                                <button type="submit" class="btn btn-success">Update Record</button>
+                                <button type="submit" class="btn btn-success">Update Article</button>
                             </div>
                         </div>
                     </form>
