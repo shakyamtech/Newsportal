@@ -26,7 +26,8 @@ class pageController extends Controller
     {
         $article = Article::where('status', 'approved')->get();
         $latest_article = Article::orderBy('id','desc')->where('status','approved')->first();
+        $trending_articles = Article::orderBy('views','desc')->where('status','approved')->limit(8)->get();
         $company = Company::first();
-        return view('frontend.home', compact('article','latest_article'));
+        return view('frontend.home', compact('article','latest_article','trending_articles','company'));
     }
 }
