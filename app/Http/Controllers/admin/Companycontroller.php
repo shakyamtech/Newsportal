@@ -34,29 +34,29 @@ class Companycontroller extends Controller
     {
         // data save garne kam
         $request->validate([
-            "name"=>"required",
-            "email"=>"required",
-            "phone"=>"required",
-            "address"=>"required",
-            "logo"=>"required|max:2048",
+            "name" => "required",
+            "email" => "required",
+            "phone" => "required",
+            "address" => "required",
+            "logo" => "required|max:2048",
         ]);
 
 
         $file = $request->logo;
-        if($file){
-            $newName = time().".".$file->getClientOriginalExtension();
+        if ($file) {
+            $newName = time() . "." . $file->getClientOriginalExtension();
             $file->move('images', $newName);
         }
         Company::create([
-            "name"=>$request->name,
-            "email"=>$request->email,
-            "phone"=>$request->phone,
-            "address"=>$request->address,
-            "facebook"=>$request->facebook,
-            "youtube"=>$request->youtube,
-            "logo"=>"images/".$newName
+            "name" => $request->name,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "address" => $request->address,
+            "facebook" => $request->facebook,
+            "youtube" => $request->youtube,
+            "logo" => "images/" . $newName
         ]);
-            return redirect()->route("admin.company.index");
+        return redirect()->route("admin.company.index");
     }
 
     /**
@@ -84,42 +84,41 @@ class Companycontroller extends Controller
     {
         // to update
         $request->validate([
-            "name"=>"required",
-            "email"=>"required",
-            "phone"=>"required",
-            "address"=>"required",
+            "name" => "required",
+            "email" => "required",
+            "phone" => "required",
+            "address" => "required",
         ]);
 
         $company = Company::find($id);
         $file = $request->logo;
-        if($file){
-            $newName = time().".".$file->getClientOriginalExtension();
+        if ($file) {
+            $newName = time() . "." . $file->getClientOriginalExtension();
             $file->move('images', $newName);
             unlink($company->logo);
-
         }
-        if($file){
-        $company->Update([
-            "name"=>$request->name,
-            "email"=>$request->email,
-            "phone"=>$request->phone,
-            "address"=>$request->address,
-            "facebook"=>$request->facebook,
-            "youtube"=>$request->youtube,
-            "logo"=>"images/".$newName
-        ]);
-        } else{
+        if ($file) {
             $company->Update([
-                "name"=>$request->name,
-                "email"=>$request->email,
-                "phone"=>$request->phone,
-                "address"=>$request->address,
-                "facebook"=>$request->facebook,
-                "youtube"=>$request->youtube,
-                "logo"=>"images/".$newName
+                "name" => $request->name,
+                "email" => $request->email,
+                "phone" => $request->phone,
+                "address" => $request->address,
+                "facebook" => $request->facebook,
+                "youtube" => $request->youtube,
+                "logo" => "images/" . $newName
+            ]);
+        } else {
+            $company->Update([
+                "name" => $request->name,
+                "email" => $request->email,
+                "phone" => $request->phone,
+                "address" => $request->address,
+                "facebook" => $request->facebook,
+                "youtube" => $request->youtube,
+                "logo" => "images/" . $newName
             ]);
         }
-            return redirect()->back();
+        return redirect()->back();
     }
 
     /**
@@ -129,8 +128,8 @@ class Companycontroller extends Controller
     {
         // to delete
         $company = Company::find($id);
-        unlink($company->logo);
+        // unlink($company->logo);
         $company->delete();
-        return redirect ()->back();
+        return redirect()->back();
     }
 }

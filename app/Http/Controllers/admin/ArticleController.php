@@ -14,7 +14,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::orderBy("id","desc")->get();
+        $articles = Article::orderBy("id", "desc")->get();
         return view("admin.article.index", compact('articles'));
     }
 
@@ -25,8 +25,7 @@ class ArticleController extends Controller
     {
         $categories = Category::all();
         // return $categories;
-        return view("admin.article.create",compact("categories"));
-
+        return view("admin.article.create", compact("categories"));
     }
 
     /**
@@ -38,27 +37,23 @@ class ArticleController extends Controller
         $article = new Article();
         $article->title = $request->title;
         $article->description = $request->description;
-        $article->meta_keywords=$request->meta_keywords;
+        $article->meta_keywords = $request->meta_keywords;
         $article->meta_description = $request->meta_description;
         $file = $request->image;
-        if($file){
-            $newName = time().".".$file->getClientOriginalExtension();
+        if ($file) {
+            $newName = time() . "." . $file->getClientOriginalExtension();
             $file->move('images', $newName);
             $article->image = "images/$newName";
         }
         $article->save();
         $article->categories()->attach($request->categories);
         return redirect()->back();
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -67,7 +62,7 @@ class ArticleController extends Controller
     {
         $categories = Category::all();
         $article = Article::find($id);
-        return view("admin.article.edit",compact("categories","article"));
+        return view("admin.article.edit", compact("categories", "article"));
     }
 
     /**
@@ -78,12 +73,12 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $article->title = $request->title;
         $article->description = $request->description;
-        $article->meta_keywords=$request->meta_keywords;
+        $article->meta_keywords = $request->meta_keywords;
         $article->meta_description = $request->meta_description;
         $article->status = $request->status;
         $file = $request->image;
-        if($file){
-            $newName = time().".".$file->getClientOriginalExtension();
+        if ($file) {
+            $newName = time() . "." . $file->getClientOriginalExtension();
             $file->move('images', $newName);
             unlink($article->image);
             $article->image = "images/$newName";

@@ -9,9 +9,12 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
+
+//Fronend Routes
 Route::get('/', [pageController::class, 'home'])->name('home');
+Route::get('/category/{slug}', [pageController::class, 'category'])->name('category');
 
-
+//Admin Routes
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -26,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::resource("/admin/article", ArticleController::class)->names('admin.article');
 });
 
-    Route::fallback([OtherController::class, 'pageNotFound']);
+Route::fallback([OtherController::class, 'pageNotFound']);
 
 
 require __DIR__ . '/auth.php';
