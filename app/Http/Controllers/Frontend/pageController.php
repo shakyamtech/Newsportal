@@ -6,21 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Company;
+use Faker\Provider\Base;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
-class pageController extends Controller
+class pageController extends BaseController
 {
-    public function __construct()
-    {
-        $company = Company::first();
-        $categories = Category::where('status',true)->get();
-        View::share([
-            "company" => $company,
-            "categories" => $categories,
 
-        ]);
-    }
 
     public function home()
     {
