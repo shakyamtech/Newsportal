@@ -13,7 +13,7 @@
                     <h1 class="text-2xl font-bold py-2">
                         {{$latest_article->title}}
                     </h1>
-                    <div class="flex flex-wrap truncate">
+                    <div class="limited-text">
                         {!!$latest_article->description!!}
                     </div>
                    </div>
