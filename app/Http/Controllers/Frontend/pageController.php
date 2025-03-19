@@ -23,8 +23,11 @@ class pageController extends BaseController
         return view('frontend.home', compact('article', 'latest_article', 'trending_articles', 'company'));
     }
 
-    public function category()
+    public function category($slug)
     {
-        return view('frontend.category');
+
+        $category = Category::where('slug', $slug)->first();
+        $articles = $category->articles;
+        return view('frontend.category', compact('articles'));
     }
 }
