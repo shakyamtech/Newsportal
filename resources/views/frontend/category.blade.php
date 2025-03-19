@@ -3,8 +3,10 @@
         <div class="container py-10">
             <div class="grid md:grid-cols-12 gap-6">
                 <div class="md:col-span-8 space-y-5">
+
                     @foreach ($articles as $article)
-                        <div class="grid grid-cols-3 items-center gap-5 border-rounded-md overflow-hidden">
+                        <div
+                            class="grid grid-cols-3 items-center gap-5 px-4 py-3 border rounded-md overflow-hidden shadow-md hover:shadow-lg">
                             <div class="col-span-1">
                                 <img class="w-full h-[200px] object-cover" src="{{ asset($article->image) }}"
                                     alt="{{ $article->title }}">
@@ -16,12 +18,15 @@
                                 <div class="limited-text">
                                     {!! $article->description !!}
                                 </div>
-                                <small></small>
+                                <small>
+                                    प्रकाशित मितिः {{ nepalidate($article->created_at) }} | {{ $article->views }} पटक
+                                    पढिएको
+                                </small>
                                 <a href="">Read more..</a>
                             </div>
                         </div>
                     @endforeach
-
+                    {{ $articles->links() }}
                 </div>
                 <div class="md:col-span-4"></div>
             </div>

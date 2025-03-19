@@ -18,7 +18,7 @@ class pageController extends BaseController
     {
         $article = Article::where('status', 'approved')->get();
         $latest_article = Article::orderBy('id', 'desc')->where('status', 'approved')->first();
-        $trending_articles = Article::orderBy('views', 'desc')->where('status', 'approved')->limit(5)->get();
+        $trending_articles = Article::orderBy('views', 'desc')->where('status', 'approved')->limit(8)->get();
         $company = Company::first();
         return view('frontend.home', compact('article', 'latest_article', 'trending_articles', 'company'));
     }
@@ -27,7 +27,7 @@ class pageController extends BaseController
     {
 
         $category = Category::where('slug', $slug)->first();
-        $articles = $category->articles;
+        $articles = $category->articles()->paginate(1);
         return view('frontend.category', compact('articles'));
     }
 }
