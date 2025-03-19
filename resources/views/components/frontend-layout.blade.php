@@ -10,6 +10,9 @@
 
      <link rel="stylesheet" href="{{ asset('frontend/style.css') }}">
      <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
+     <script type='text/javascript'
+         src='https://platform-api.sharethis.com/js/sharethis.js#property=67dae2db6eb4310012fddbec&product=inline-share-buttons'
+         async='async'></script>
  </head>
 
  <body>

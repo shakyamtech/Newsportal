@@ -34,14 +34,12 @@ class pageController extends BaseController
 
     public function article($id)
     {
-        $article = Article::findOrfail($id);
+        $article = Article::findOrFail($id);
         $cookie_data = Cookie::get("article$id");
         if (!$cookie_data) {
             $article->increment('views');
             Cookie::queue("article$id", $article->id);
         }
-        $article->increment('views');
-        Cookie::queue('article', $article->id, 1);
         return view('frontend.article', compact('article'));
     }
 }

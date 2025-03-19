@@ -16,6 +16,9 @@
                         </h1>
                         <div class="limited-text">
                             {!! $latest_article->description !!}
+
+                            <!-- ShareThis BEGIN -->
+                            <div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
                         </div>
                     </a>
                 </div>
