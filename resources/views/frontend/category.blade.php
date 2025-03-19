@@ -22,7 +22,7 @@
                                     प्रकाशित मितिः {{ nepalidate($article->created_at) }} | {{ $article->views }} पटक
                                     पढिएको
                                 </small>
-                                <a href="">Read more..</a>
+                                <a href="{{ route('article', $article->id) }}">Read more..</a>
                             </div>
                         </div>
                     @endforeach

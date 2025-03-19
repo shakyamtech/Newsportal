@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 //Fronend Routes
 Route::get('/', [pageController::class, 'home'])->name('home');
 Route::get('/category/{slug}', [pageController::class, 'category'])->name('category');
+Route::get('/article/{id}', [pageController::class, 'article'])->name('article');
+
 
 //Admin Routes
 Route::get('/dashboard', function () {
