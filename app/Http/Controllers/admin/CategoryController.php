@@ -6,7 +6,9 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Mail\EmailNotification;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class CategoryController extends Controller
 {
@@ -40,6 +42,14 @@ class CategoryController extends Controller
         $category->meta_keywords = $request->meta_keywords;
         $category->meta_description = $request->meta_description;
         $category->save();
+
+        $data = [
+            "Subject" => "New Category Added",
+            "message" => "A new category has been added on your website. Please login to your dashboard to view the details.",
+        ];
+
+        $admins = User::all();
+        Mail::to($admins)->send(new EmailNotification($data));
         return redirect()->back();
     }
 
@@ -65,16 +75,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-            // return $request->all();
-            $category = Category::find($id);
-            $category->nep_title = $request->nep_title;
-            $category->eng_title = $request->eng_title;
-            $category->slug = Str::slug($request->eng_title);
-            $category->meta_keywords = $request->meta_keywords;
-            $category->meta_description = $request->meta_description;
-            $category->status = $request->status;
-            $category->save();
-            return redirect()->back();
+        // return $request->all();
+        $category = Category::find($id);
+        $category->nep_title = $request->nep_title;
+        $category->eng_title = $request->eng_title;
+        $category->slug = Str::slug($request->eng_title);
+        $category->meta_keywords = $request->meta_keywords;
+        $category->meta_description = $request->meta_description;
+        $category->status = $request->status;
+        $category->save();
+        return redirect()->back();
     }
 
     /**
