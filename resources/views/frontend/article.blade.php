@@ -15,8 +15,12 @@
                     <div>
                         {!! $article->description !!}
                     </div>
-                    <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
+                    <!-- ShareThis BEGIN -->
+                    <div class="sharethis-inline-share-buttons"></div>
+                    <!-- ShareThis END -->
+                    <div class="fb-comments" data-href="http://127.0.0.1:8000/article/{{ $article->id }}" data-width="" data-numposts="5"></div>
                 </div>
+
                 <div class="md:col-span-4"></div>
             </div>
         </div>
