@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 //Fronend Routes
 Route::get('/', [pageController::class, 'home'])->name('home');
+Route::get('/search', [pageController::class, 'search'])->name('search');
 Route::get('/category/{slug}', [pageController::class, 'category'])->name('category');
 Route::get('/article/{id}', [pageController::class, 'article'])->name('article');
 

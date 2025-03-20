@@ -29,7 +29,7 @@ class pageController extends BaseController
 
         $category = Category::where('slug', $slug)->first();
         $articles = $category->articles()->paginate(10);
-        return view('frontend.category', compact('articles'));
+        return view('frontend.category', compact('articles', 'category'));
     }
 
     public function article($id)
@@ -41,5 +41,21 @@ class pageController extends BaseController
             Cookie::queue("article$id", $article->id);
         }
         return view('frontend.article', compact('article'));
+    }
+
+    public function search(Request $request)
+    {
+        $q = $request->q;
+        $article = Article::where('title', 'like', "%$q%")->first();
+        if (!$article) {
+            return view('404page');
+        }
+        $cookie_data = Cookie::get("article$article->id");
+        if (!$cookie_data) {
+            $article->increment('views');
+            Cookie::queue("article$article->id", $article->id);
+        }
+        return view('frontend.article', compact('article'));
+        return $request;
     }
 }
