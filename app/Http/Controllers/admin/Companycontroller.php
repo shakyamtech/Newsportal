@@ -95,7 +95,7 @@ class Companycontroller extends Controller
         if ($file) {
             $newName = time() . "." . $file->getClientOriginalExtension();
             $file->move('images', $newName);
-            unlink($company->logo);
+            // unlink($company->logo);
         }
         if ($file) {
             $company->Update([
@@ -128,7 +128,7 @@ class Companycontroller extends Controller
     {
         // to delete
         $company = Company::find($id);
-        // unlink($company->logo);
+        unlink($company->logo);
         $company->delete();
         return redirect()->back();
     }

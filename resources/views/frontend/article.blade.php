@@ -15,6 +15,7 @@
                     <div>
                         {!! $article->description !!}
                     </div>
+                    <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
                 </div>
                 <div class="md:col-span-4"></div>
             </div>
