@@ -57,5 +57,7 @@
                 @endif
             @endforeach
         </div>
+        <img class="w-full h-[240px] py-4 px-20" src="https://www.jawaaf.com/storage/01JJ6H6TARD078P4P5ZFMQSY2A.gif"
+            alt="">
     </section>
 </x-frontend-layout>

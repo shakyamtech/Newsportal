@@ -37,3 +37,12 @@ body{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.description figure{
+    width: 100%;
+}
+.straight_line{
+    border: 1px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
