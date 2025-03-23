@@ -37,7 +37,137 @@ body{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.diagonal-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 100%;
+    background-color: var(--primary);
+    z-index: 10;
+}
+@media(max-width:720px) {
+    .diagonal-box {
+    width: 120px;
+    height: 100%;
+}
+}
 
+.diagonal-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    transform: skewY(-20deg);
+    transform-origin: top left;
+}
+
+.diagonal-text {
+    position: absolute;
+    top: 55%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
+.hello-text {
+    display: block;
+    font-size: 18px;
+    position: relative;
+    top: -20%;
+    margin-right: 50px;
+}
+
+.world-text {
+    display: block;
+    font-size: 18px;
+    color: #fff;
+    position: relative;
+    margin-left: 90px;
+}
+
+.branch-text {
+    display: inline-block;
+}
+
+.marquee-container-news {
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    /* background: radial-gradient(circle, #003d71, #005fa3, #003d71); */
+    /* background: radial-gradient(circle, var(--primary), var(--secondary), var(--primary)); */
+    color: black;
+    padding: 8px 0;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.marquee-content-news {
+    display: flex;
+    gap: 30px;
+    /* Space between items */
+    min-width: 850%;
+    animation: marquee 60s linear infinite;
+    /* Slow speed */
+}
+
+.marquee-container-news {
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    background: whitesmoke;
+    color: black;
+    padding: 20px 0;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.marquee-content-news {
+    display: flex;
+    gap: 30px;
+    min-width: 680%;
+    animation: marquee 60s linear infinite;
+}
+
+.marquee-container-news:hover .marquee-content-news {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(15%);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-content-news a {
+    /* color: rgba(255, 255, 255, 0.9); */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.marquee-content-news a:hover {
+    color: rgb(195, 193, 193);
+}
 .description figure{
     width: 100%;
 }
