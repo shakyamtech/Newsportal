@@ -24,8 +24,8 @@
             <a href="{{route('admin.article.index')}}" class="nav-link"><i class="fas fa-poo"></i><span>Article</span></a>
         </li>
 
-        <li class="dropdown">
-            <a href="{{route('dashboard')}}" class="nav-link"><i class="fab fa-adversal"></i><span>Advertise</span></a>
+        <li class="dropdown {{ Request::routeIs('admin.advertisement.*') ? 'active':''}}">
+            <a href="{{route('admin.advertisement.index')}}" class="nav-link"><i class="fab fa-adversal"></i><span>Advertise</span></a>
         </li>
         {{-- <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i

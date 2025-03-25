@@ -16,51 +16,14 @@
 
                     <div class="flex justify-center items-center">
                         <i class="fa-solid fa-bullhorn"></i>
-                        <a href="https://www.jawaaf.com/news/3761"
+                        <a href="http://127.0.0.1:8000/article/25"
                             class="underline-grow branch-item py-1 px-2 bg-hover-secondary">
                             <span class="branch-text">{{ $latest_article->title }}
 
                             </span>
                         </a>
                     </div>
-                    <div class="flex justify-center items-center">
-                        <i class="fa-solid fa-bullhorn"></i>
-                        <a href="https://www.jawaaf.com/news/3760"
-                            class="underline-grow branch-item py-1 px-2 bg-hover-secondary">
-                            <span class="branch-text">जनताको पानी र सरकारको लगानी गर्ने विषय हाम्रो मूल लक्ष्य हो :
-                                मन्त्री यादव
 
-                            </span>
-                        </a>
-                    </div>
-                    <div class="flex justify-center items-center">
-                        <i class="fa-solid fa-bullhorn"></i>
-                        <a href="https://www.jawaaf.com/news/3759"
-                            class="underline-grow branch-item py-1 px-2 bg-hover-secondary">
-                            <span class="branch-text">प्रधानमन्त्रीको हप्ता दिन : समृद्धिका दर्जन भाषण, कार्यमा शून्यता
-
-                            </span>
-                        </a>
-                    </div>
-                    <div class="flex justify-center items-center">
-                        <i class="fa-solid fa-bullhorn"></i>
-                        <a href="https://www.jawaaf.com/news/3758"
-                            class="underline-grow branch-item py-1 px-2 bg-hover-secondary">
-                            <span class="branch-text">विश्वकै व्यस्त बेलायतको हिथ्रो विमानस्थल प्रभावित, आगलागीले
-                                अस्तव्यस्त
-
-                            </span>
-                        </a>
-                    </div>
-                    <div class="flex justify-center items-center">
-                        <i class="fa-solid fa-bullhorn"></i>
-                        <a href="https://www.jawaaf.com/news/3757"
-                            class="underline-grow branch-item py-1 px-2 bg-hover-secondary">
-                            <span class="branch-text">सुगम बन्दै शैलुङ
-
-                            </span>
-                        </a>
-                    </div>
                 </div>
             </div>
 

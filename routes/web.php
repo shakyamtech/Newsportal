@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\AdvertisementController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\admin\Companycontroller;
 use App\Http\Controllers\Frontend\OtherController;
 use App\Http\Controllers\Frontend\pageController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +17,7 @@ Route::get('/', [pageController::class, 'home'])->name('home');
 Route::get('/search', [pageController::class, 'search'])->name('search');
 Route::get('/category/{slug}', [pageController::class, 'category'])->name('category');
 Route::get('/article/{id}', [pageController::class, 'article'])->name('article');
+
 
 
 //Admin Routes
@@ -27,9 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+
     Route::resource("/admin/company", Companycontroller::class)->names('admin.company');
     Route::resource("/admin/category", CategoryController::class)->names('admin.category');
     Route::resource("/admin/article", ArticleController::class)->names('admin.article');
+    Route::resource("/admin/advertisement", AdvertisementController::class)->names('admin.advertisement');
+
 });
 
 Route::fallback([OtherController::class, 'pageNotFound']);

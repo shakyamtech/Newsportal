@@ -172,7 +172,7 @@ body{
     width: 100%;
 }
 .straight_line{
-    border: 1px;
+    border: 10px;
     overflow: hidden;
     margin-bottom: 20px;
 }
