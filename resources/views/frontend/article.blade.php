@@ -23,7 +23,8 @@
                         data-numposts="5"></div>
                 </div>
 
-                <div class="md:col-span-4"></div>
+                <div class="md:col-span-4">
+                </div>
             </div>
         </div>
     </section>

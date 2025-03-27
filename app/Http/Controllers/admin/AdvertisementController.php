@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advertisement;
 use Illuminate\Http\Request;
 
 class AdvertisementController extends Controller
@@ -13,7 +14,8 @@ class AdvertisementController extends Controller
     public function index()
     {
         //
-        return view('admin.advertisement.index');
+        $advertisement = Advertisement::first();
+        return view("admin.advertisement.index", compact('advertisement'));
     }
 
     /**
@@ -22,7 +24,7 @@ class AdvertisementController extends Controller
     public function create()
     {
         //
-
+        return view("admin.advertisement.create");
     }
 
     /**
@@ -30,7 +32,30 @@ class AdvertisementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => "required",
+            "email" => "required",
+            "phone" => "required",
+            "address" => "required",
+            "logo" => "required|max:2048",
+        ]);
+
+
+        $file = $request->logo;
+        if ($file) {
+            $newName = time() . "." . $file->getClientOriginalExtension();
+            $file->move('images', $newName);
+        }
+        Advertisement::create([
+            "name" => $request->name,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "address" => $request->address,
+            "facebook" => $request->facebook,
+            "youtube" => $request->youtube,
+            "logo" => "images/" . $newName
+        ]);
+        return redirect()->route("admin.advertisement.index");
     }
 
     /**
@@ -47,6 +72,8 @@ class AdvertisementController extends Controller
     public function edit(string $id)
     {
         //
+        $advertisement = Advertisement::find($id);
+        return view("admin.advertisement.edit", compact('advertisement'));
     }
 
     /**
@@ -55,6 +82,42 @@ class AdvertisementController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            "name" => "required",
+            "email" => "required",
+            "phone" => "required",
+            "address" => "required",
+        ]);
+
+        $advertisement = Advertisement::find($id);
+        $file = $request->logo;
+        if ($file) {
+            $newName = time() . "." . $file->getClientOriginalExtension();
+            $file->move('images', $newName);
+            // unlink($company->logo);
+        }
+        if ($file) {
+            $advertisement->Update([
+                "name" => $request->name,
+                "email" => $request->email,
+                "phone" => $request->phone,
+                "address" => $request->address,
+                "facebook" => $request->facebook,
+                "youtube" => $request->youtube,
+                "logo" => "images/" . $newName
+            ]);
+        } else {
+            $advertisement->Update([
+                "name" => $request->name,
+                "email" => $request->email,
+                "phone" => $request->phone,
+                "address" => $request->address,
+                "facebook" => $request->facebook,
+                "youtube" => $request->youtube,
+                "logo" => "images/" . $newName
+            ]);
+        }
+        return redirect()->back();
     }
 
     /**
@@ -63,5 +126,9 @@ class AdvertisementController extends Controller
     public function destroy(string $id)
     {
         //
+        $advertisement = Advertisement::find($id);
+        unlink($advertisement->logo);
+        $advertisement->delete();
+        return redirect()->back();
     }
 }

@@ -28,7 +28,9 @@
                     @endforeach
                     {{ $articles->links() }}
                 </div>
-                <div class="md:col-span-4"></div>
+                <div class="md:col-span-4">
+                   <img src="https://jawaaf.com/storage/01J7XGRKS0R8J5QYMHV0K8S9TA.gif" alt="">
+                </div>
             </div>
         </div>
     </section>
